@@ -89,3 +89,14 @@ function noteplus_install()
 
     rebuild_settings();
 }
+
+/**
+ * @function Plugin is installed
+ * @return bool
+ */
+function statsplus_is_installed()
+{
+    global $mybb;
+    
+    return isset($mybb->settings['statsplus_enabled']);
+}
