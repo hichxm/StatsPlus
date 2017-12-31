@@ -51,20 +51,6 @@ function statsplus_install()
             "optionscode"   => "yesno",
             "value"         => 1,
             "disporder"     => 1
-        ],
-        "statsplus_request_get"     => [
-            "title"         => "Request GET",
-            "description"   => "Number of HTTP request. (get)",
-            "optionscode"   => "numeric",
-            "value"         => 0,
-            "disporder"     => 3
-        ],
-        "statsplus_request_post"    => [
-            "title"         => "Request POST",
-            "description"   => "Number of HTTP request. (post)",
-            "optionscode"   => "numeric",
-            "value"         => 0,
-            "disporder"     => 4
         ]
     ];
 
@@ -96,13 +82,7 @@ function statsplus_install()
 		        <div class="float_left">Record de connexion:</div>   <div class="float_right">{$mostonline[\'numusers\']}</div> 
 		        <br />
 		        <div class="float_left">Dernier membre:</div>   <div class="float_right">{last user}</div> 
-				<br />
-		        <div class="float_left">Rêquete HTTP:</div>   <div class="float_right">{total request}</div> 
-				<br />
-		        <div class="float_left">Rêquete HTTP (GET):</div>   <div class="float_right">{total request get}</div> 
-				<br />
-		        <div class="float_left">Rêquete HTTP (POST):</div>   <div class="float_right">{total request post}</div> 
-			</span>
+		    </span>
 		</td>
 	</tr>
 </table>
@@ -165,11 +145,6 @@ function statsplus_index_start()
     $statsplus_tpl = str_replace("{total post}",     $stats["numposts"], $statsplus_tpl);
     $statsplus_tpl = str_replace("{total thread}",   $stats["numthreads"], $statsplus_tpl);
     $statsplus_tpl = str_replace("{total membre}",   $stats["numusers"], $statsplus_tpl);
-
-    $statsplus_tpl = str_replace("{total request}",  $mybb->settings["statsplus_request_get"] + $mybb->settings["statsplus_request_post"], $statsplus_tpl);
-    $statsplus_tpl = str_replace("{total request get}", $mybb->settings["statsplus_request_get"], $statsplus_tpl);
-    $statsplus_tpl = str_replace("{total request post}", $mybb->settings["statsplus_request_post"], $statsplus_tpl);
-
 
     eval('$statsplus  = "' . $statsplus_tpl . '";');
 }
