@@ -15,3 +15,12 @@ function noteplus_info()
         "compatibility" => "18*"
     ];
 }
+
+/**
+ * @function Plugin installation
+ * @return mixed
+ */
+function noteplus_install()
+{
+
+}
