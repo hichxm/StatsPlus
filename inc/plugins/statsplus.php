@@ -79,8 +79,6 @@ function statsplus_install()
 		        <br />
 		        <div class="float_left">Membre:</div>   <div class="float_right">{total membre}</div> 
 		        <br />
-		        <div class="float_left">Record de connexion:</div>   <div class="float_right">{$mostonline[\'numusers\']}</div> 
-		        <br />
 		        <div class="float_left">Dernier membre:</div>   <div class="float_right">{last user}</div> 
 		    </span>
 		</td>
