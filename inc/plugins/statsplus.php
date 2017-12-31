@@ -49,5 +49,43 @@ function noteplus_install()
         $db->insert_query("settings", $setting);
     }
 
+    $templates = [
+        "statsplus_tpl" => [
+            "template"  => $db->escape_string('
+<table border="0" cellspacing="{$theme[\'borderwidth\']}" cellpadding="{$theme[\'tablespace\']}" class="tborder">
+    <tr>
+		<td class="thead">
+				Statistique
+		</td>
+	</tr>
+	<tr>
+        <td class="trow2">
+	        <span class="smalltext">
+		        <div class="float_left">Discussion:</div>   <div class="float_right">{$stats[\'numthreads\']}</div> 
+                <br />
+		        <div class="float_left">Message:</div>   <div class="float_right">{$stats[\'numposts\']}</div> 
+		        <br />
+		        <div class="float_left">Membre:</div>   <div class="float_right">{$stats[\'numusers\']}</div> 
+		        <br />
+		        <div class="float_left">Record de connexion:</div>   <div class="float_right">{$mostonline[\'numusers\']}</div> 
+		        <br />
+		        <div class="float_left">Dernier membre:</div>   <div class="float_right">{$stats[\'lastusername\']}</div> 
+			</span>
+		</td>
+	</tr>
+</table>
+            '),
+            "sid"       => "-1",
+            "version"   => ""
+        ]
+    ];
 
+    foreach ($templates as $title => $template){
+        $template["title"]      = $title;
+        $template["dateline"]   = time();
+
+        $db->insert_query("templates", $template);
+    }
+
+    rebuild_settings();
 }
