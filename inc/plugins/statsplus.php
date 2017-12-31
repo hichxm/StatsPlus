@@ -5,6 +5,11 @@ if (!defined("IN_MYBB"))
     die("Direct initialization of this file is not allowed.");
 }
 
+global $mybb;
+if ($mybb->settings["statsplus_enabled"] == 1)
+{
+    $plugins->add_hook("index_start", "statsplus_index_start");
+}
 
 /**
  * @function Return plugin information
@@ -120,4 +125,9 @@ function statsplus_uninstall()
     $db->delete_query("templates", "title LIKE \"statsplus_%\"");
 
     rebuild_settings();
+}
+
+function statsplus_index_start()
+{
+
 }
