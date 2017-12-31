@@ -97,6 +97,21 @@ function noteplus_install()
 function statsplus_is_installed()
 {
     global $mybb;
-    
+
     return isset($mybb->settings['statsplus_enabled']);
+}
+
+/**
+ * @function Plugin uninstall
+ * @return mixed
+ */
+function statsplus_uninstall()
+{
+    global $db;
+
+    $db->delete_query("settinggroups", "name=\"statsplus_sg\"");
+    $db->delete_query("settings", "name LIKE \"statsplus_%\"");
+    $db->delete_query("templates", "title LIKE \"statsplus_%\"");
+
+    rebuild_settings();
 }
