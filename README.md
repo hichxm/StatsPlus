@@ -24,7 +24,7 @@ Pour modifier le template à votre guise.
 <table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
     <tr>
 		<td class="thead">
-				Statistique
+			Statistique
 		</td>
 	</tr>
 	<tr>
