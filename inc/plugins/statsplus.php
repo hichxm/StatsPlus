@@ -130,5 +130,21 @@ function statsplus_uninstall()
 
 function statsplus_index_start()
 {
+    global $templates, $theme, $cache, $statsplus;
 
+
+    $stats = $cache->read("stats");
+
+    //eval('$debug  = "' . var_dump($stats) . '";');
+
+    $statsplus_tpl = $templates->get("statsplus_tpl");
+
+    $statsplus_tpl = str_replace("{lastuser}",      $stats["lastusername"], $statsplus_tpl);
+    $statsplus_tpl = str_replace("{lastuser uuid}", $stats["lastuid"], $statsplus_tpl);
+
+    $statsplus_tpl = str_replace("{total post}",     $stats["numposts"], $statsplus_tpl);
+    $statsplus_tpl = str_replace("{total thread}",   $stats["numthreads"], $statsplus_tpl);
+    $statsplus_tpl = str_replace("{total membre}",   $stats["numusers"], $statsplus_tpl);
+
+    eval('$statsplus  = "' . $statsplus_tpl . '";');
 }
