@@ -6,6 +6,7 @@ if (!defined("IN_MYBB"))
 }
 
 global $mybb;
+
 if ($mybb->settings["statsplus_enabled"] == 1)
 {
     $plugins->add_hook("index_start", "statsplus_index_start");
@@ -15,7 +16,7 @@ if ($mybb->settings["statsplus_enabled"] == 1)
  * @function Return plugin information
  * @return array
  */
-function noteplus_info()
+function statsplus_info()
 {
     return [
         "name"          => "StatsPlus",
@@ -31,7 +32,7 @@ function noteplus_info()
  * @function Plugin installation
  * @return mixed
  */
-function noteplus_install()
+function statsplus_install()
 {
     global $db;
 
